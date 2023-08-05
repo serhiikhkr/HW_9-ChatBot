@@ -58,20 +58,21 @@ def main():
         elif user_message.strip().lower() in END_COMMAND:
             print('Good bye')
             flag_start_chat = False
-        list_input_elements = parsing_input(user_message)
-        if list_input_elements:
-            if list_input_elements[0] == 'phone':
-                result = COMMAND_CHAT[list_input_elements[0]](list_input_elements)
-                print(result)
-            elif list_input_elements[0] == 'show' and list_input_elements[1] == 'all':
-                result = COMMAND_CHAT['show all']()
-                print(result)
-            else:
-                result = COMMAND_CHAT[list_input_elements[0]](list_input_elements)
-                if result == None:
-                    print('Done')
-                else:
+        else:
+            list_input_elements = parsing_input(user_message)
+            if list_input_elements:
+                if list_input_elements[0] == 'phone':
+                    result = COMMAND_CHAT[list_input_elements[0]](list_input_elements)
                     print(result)
+                elif list_input_elements[0] == 'show' and list_input_elements[1] == 'all':
+                    result = COMMAND_CHAT['show all']()
+                    print(result)
+                else:
+                    result = COMMAND_CHAT[list_input_elements[0]](list_input_elements)
+                    if result == None:
+                        print('Done')
+                    else:
+                        print(result)
 
 
 if __name__ == "__main__":
